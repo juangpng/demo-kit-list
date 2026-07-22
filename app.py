@@ -97,11 +97,11 @@ if page == "📊 Inventory":
         status_filter = st.multiselect(
             "Status",
             ["Available", "Reserved", "Maintenance", "Scrapped"],
-            default=["Available", "Reserved"],
+            default=["Available"],
         )
     with col2:
         locations = query_df("SELECT DISTINCT location FROM systems ORDER BY location")["location"].tolist()
-        loc_filter = st.multiselect("Location", locations, default=locations)
+        loc_filter = st.multiselect("Location", locations, default=[])
     with col3:
         families = query_df("SELECT DISTINCT product_family FROM systems ORDER BY product_family")["product_family"].tolist()
         fam_filter = st.multiselect("Product Family", families)
